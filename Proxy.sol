@@ -29,12 +29,8 @@ contract ImplV2 {
 
 contract MainProxy {
 
-    bytes32 public constant IMPL_SLOT = bytes32(
-        uint(keccak256("eip1967.proxy.implementation"))-1
-    );
-    bytes32 public constant ADMIN_SLOT = bytes32(
-        uint(keccak256("eip1967.proxy.admin"))-1
-    );
+    bytes32 public constant IMPL_SLOT = bytes32(uint(keccak256("eip1967.proxy.implementation"))-1);
+    bytes32 public constant ADMIN_SLOT = bytes32(uint(keccak256("eip1967.proxy.admin"))-1);
 
     constructor(){
         _setAdmin(msg.sender);
@@ -111,7 +107,7 @@ library StorageSlot {
 }
 
 contract TestingLibrary {
-    //considering that solidity storage slot varies from 0 to 2^256 (that would be impracticle to be all used
+    //considering that solidity storage slot varies from 0 to 2^256 (that would make impractical to use all storage slots )
     bytes32 public constant TESTING_SLOT = bytes32(
         uint(keccak256("ANY_STRING_TO_TEST"))-1
     );
